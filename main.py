@@ -26,7 +26,7 @@ while True:
 
     instruction_ids = tokenizer.encode(f"[INST] {instruction} [/INST]", add_bos = True)
     context_ids = instruction_ids if generator.sequence_ids is None \
-            else torch.cat([generator.sequence_ids, instructions_ids], dim = -1)
+            else torch.cat([generator.sequence_ids, instruction_ids], dim = -1)
 
     generator.begin_stream(context_ids, gen_settings)
 
